@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery获取所有的class标签</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+<a href="https://www.baidu.com" class="aaa">自动执行超链接点击事件</a>
+</body>
+</html>
+
+<script>
+    $('a').click(function(event) {
+        var url = $(".aaa").attr("href")
+        if (url === "https://www.baidu.co") {
+            window.open(url)
+        } else {
+            alert("将打开第三方链接")
+        }
+        event.stopPropagation(); //只阻止了冒泡事件， 默认默认行为没有阻止
+        event.preventDefault(); //只阻止了默认事件，冒泡事件没有阻止
+    })
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js获取所有的class标签</title>
+
+</head>
+<body>
+
+<a href="https://www.baidu.com" class="ant-btn">自动执行超链接点击事件</a>
+</body>
+</html>
+
+<script>
+    var list=document.getElementsByClassName('ant-btn'); // 获取class为ant-btn的元素
+    for(var i in list)
+    {
+        list[i].onclick=function() { // 添加点击事件
+            var data = []
+            var input = document.getElementsByClassName('ant-input'); // 获取class为ant-input的元素
+            console.log(input)
+            for (var d = 0; d < input.length; d++) { // 获取值放入data中
+                var content = {}
+                content[input[d].placeholder] = input[d].value
+                data[d] = content
+            }
+            console.log(data)
+            alert("be click")
+        };
+    }
+</script>
