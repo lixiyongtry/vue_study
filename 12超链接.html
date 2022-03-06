@@ -17,6 +17,16 @@
 <script>
     $('a').click(function(event) {
         var url = $(".aaa").attr("href")
+        let urls = [];
+        // var url = document.URL;//获取当前页面的URL
+        var url = "https://www.baidu.com"
+        const redFruits = ['apple', 'strawberry', 'cherry', 'cranberries'];
+
+        if (redFruits.includes(url)) {
+            console.log('red');
+        }
+        var domain = url.match(/http[s]?:\/\/(.*?)([:\/]|$)/);//匹配指定URL的domain
+        console.log(domain)
         if (url === "https://www.baidu.co") {
             window.open(url)
         } else {
