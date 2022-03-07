@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <!--  props中的字符串 从后台获取到的 传给子组件 -->
+        <articlee :html="matchcontent">aaaa<a @click="test1()">Hello world!</a></articlee>
+    </div>
+
+</template>
+<script>
+    export default {
+        components: {
+            'articlee':{//用来解析html片段
+                props:{
+                    html:String
+                },
+                render: function(createElement) {
+                    return createElement(
+                        'p',    // tag name 标签名称
+                        this.$slots.default  // 组件的子元素
+                    )
+                }
+            }
+        },
+        data(){
+            return {
+                matchcontent:'aaaa<a @click="test1()">Hello world!</a>',
+            }
+        },
+        methods: {
+            test1() {
+                alert("1111")
+            }
+        }
+    }
+</script>
+

@@ -1,0 +1,46 @@
+<template>
+    <div>
+        <!--  props中的字符串 从后台获取到的 传给子组件 -->
+        <article :html="matchcontent"></article>
+    </div>
+
+</template>
+<script>
+    import {getArticle} from '****'
+    export default {
+        components: {
+            'article':{//用来解析html片段
+                props:{
+                    html:String
+                },
+                render(h){
+                    const com=Vue.extend({
+                        template:`<div>${this.html}</div>`
+                    });
+                    return h(com,{});
+                }
+            }
+        },
+        data(){
+            return {
+                matchcontent:'',
+            }
+        },
+        created() {
+            window.getRuleInfo = this.getRuleInfo;//字符串中的方法 这样写就可以获取到
+            this.getHtml();
+        },
+        methods:{
+            getHtml(){//获取html片段
+                getArticle().then(res=>{//后台接口
+                    this.matchcontent=res.data.data;
+                })
+            },
+            getRuleInfo(obj){//点击字符串中的方法
+                console.log(obj)
+            },
+
+        }
+    }
+</script>
+
